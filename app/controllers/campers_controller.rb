@@ -6,14 +6,24 @@ class CampersController < ApplicationController
 
 
     def index 
-        camper = Camper.all
-        render json: camper
+        # camper = Camper.all
+        # render json: camper
+        render json: Camper.all
     end
 
     def show   
         camper = Camper.find(params[:id])
-        render json: camper
-        # render json: camper, serializer: CamperWithActivitiesSerializer  #returns the matching camper with their associated activities
+        render json: camper, include: :activities
+
+        #3:08 PM
+        #Serializers were interferring my last test
+        # render json: camper, serializer: CamperWithActivitiesSerializer #, include: :activities  returns the matching camper with their associated activities
+        # camper = Camper.find_by_id(params[:id])
+        # if camper
+        #     render json:, inlcude: :activities
+        # else
+        #     render json: { error: "Camper not found" }, status: :not_found
+        # end
     end
 
     def create      

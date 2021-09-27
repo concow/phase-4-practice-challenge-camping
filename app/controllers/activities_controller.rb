@@ -10,7 +10,7 @@ class ActivitiesController < ApplicationController
     # .find(id: params[:id]) did not work
     activity = Activity.find(params[:id])
     activity.destroy
-    head :no_content
+    # head :no_content
   end
 
   private
