@@ -12,8 +12,8 @@ class CampersController < ApplicationController
 
     def show   
         camper = Camper.find(params[:id])
-        render json: camper
-        # render json: camper, serializer: CamperWithActivitiesSerializer  #returns the matching camper with their associated activities
+        render json: camper, include: :activities
+        # render json: camper, serializer: CamperWithActivitiesSerializer, include: :activities  #returns the matching camper with their associated activities
     end
 
     def create      

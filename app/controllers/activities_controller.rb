@@ -8,7 +8,7 @@ class ActivitiesController < ApplicationController
 
   def destroy
     # .find(id: params[:id]) did not work
-    activity = Activity.find(params[:id])
+    activity = Activity.find_by_id(params[:id])
     activity.destroy
     head :no_content
   end
